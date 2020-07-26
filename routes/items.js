@@ -9,9 +9,7 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   if (!req.body.name || !req.body.price)
-    throw new ExpressError(
-      "Invalid request please add item's name and price to query string"
-    );
+    throw new ExpressError("Invalid request please add item's name and price");
   const newItem = { name: req.body.name, price: req.body.price };
   items.push(newItem);
   res.status(201).json({ added: newItem });
